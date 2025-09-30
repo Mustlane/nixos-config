@@ -14,15 +14,13 @@ config = lib.mkIf config.zsh.enable {
       strategy = [ "history" "completion" ];
       };
     syntaxHighlighting.enable = true;
-    initContent = "
-                   autoload -Uz vcs_info \n
-                   precmd_vcs_info() { vcs_info } \n
-                   precmd_functions+=( precmd_vcs_info ) \n
-                   setopt prompt_subst \n
-                   RPROMPT='${vcs_info_msg_0_}' \n
-                   # PROMPT='%F{green}%*%f %F{blue}%~%f' 
-                   \n
-                   zstyle ':vcs_info:git:*' formats '%b'";
+    initContent = ''
+autoload -Uz vcs_info
+precmd() { vcs_info }
+zstyle ':vcs_info:git:*' formats ' %F{#C1B492}%b%f'
+setopt PROMPT_SUBST
+PROMPT='%F{#D2738A}[%f%F{#C1B492}%n@%m%f %F{#D2738A}%d%f''${vcs_info_msg_0_}%F{#C1B492}]$%f '
+'';
     oh-my-zsh = {
         enable = true;
         plugins = [ "rbw" "copyfile" "copypath" "sudo" "git" ];

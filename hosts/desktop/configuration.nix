@@ -82,15 +82,6 @@ security.polkit.enable = true;
     shell = pkgs.zsh;
   };
 
-programs = {
-  firefox = {
-    enable = true;
-  };
-  neovim = {
-    enable = true;
-  };
-};
-
 nixpkgs.config.allowUnfree = true;
 
   fonts.packages = with pkgs; [
@@ -116,8 +107,12 @@ nixpkgs.config.allowUnfree = true;
     vesktop
     inkscape
     imagemagick
-    ksnip
     bat
     wl-clipboard
-];
+    grim
+    slurp
+    hyprpicker
+    ytermusic
+    youtube-tui
+  ];
 }
