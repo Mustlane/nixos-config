@@ -7,12 +7,14 @@
     ./nixos/postgresql/postgresql.nix
     ./nixos/steam/steam.nix
     ./nixos/wine/wine.nix
+    ./nixos/qbittorrent/qbittorrent.nix
   ];
 
   pavucontrol.enable = true;
   flameshot.enable = false;
   ksnip.enable = false;
   postgresql.enable = true;
-  steam.enable = false;
+  steam.enable = true;
   wine.enable = false;
+  qbittorrent.enable = true;
 }

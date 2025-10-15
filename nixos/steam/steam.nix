@@ -8,7 +8,9 @@
 config = lib.mkIf config.steam.enable {
     programs.steam = {
       enable = true;
-      protontricks = true;
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
+      localNetworGameTransfers.openFirewall = true;
     };
   };
 }
