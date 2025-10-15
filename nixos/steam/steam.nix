@@ -10,7 +10,7 @@ config = lib.mkIf config.steam.enable {
       enable = true;
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
-      localNetworGameTransfers.openFirewall = true;
+      localNetworkGameTransfers.openFirewall = true;
     };
   };
 }

@@ -24,6 +24,11 @@
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
+  fileSystems."/home/mustlane/data" =
+    { device = "/dev/disk/by-uuid/f64ff098-f123-42f8-bc87-07f04ced8e5b";
+      fsType = "ext4";
+    };
+
   swapDevices =
     [ { device = "/dev/disk/by-uuid/e2cb5d8f-9d7d-4728-9a6f-1719595362a8"; }
     ];

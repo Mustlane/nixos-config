@@ -6,6 +6,11 @@
 };
 
 config = lib.mkIf config.qbittorrent.enable {
+
+    environment.systemPackages = with pkgs; [
+      qbittorrent
+  ];
+
     services.qbittorrent = {
       enable = true;
       user = "mustlane";

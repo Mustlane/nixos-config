@@ -8,6 +8,7 @@
     ./nixos/steam/steam.nix
     ./nixos/wine/wine.nix
     ./nixos/qbittorrent/qbittorrent.nix
+    ./nixos/umu-launcher/umu-launcher.nix
   ];
 
   pavucontrol.enable = true;
@@ -17,4 +18,5 @@
   steam.enable = true;
   wine.enable = false;
   qbittorrent.enable = true;
+  umu-launcher.enable = true;
 }
