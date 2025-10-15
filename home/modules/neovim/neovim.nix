@@ -6,8 +6,5 @@
 };
 
 config = lib.mkIf config.neovim.enable {
-  programs.neovim = {
-    enable = true;
-    };
   };
 }

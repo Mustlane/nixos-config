@@ -2,10 +2,18 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
       ./hardware-configuration.nix
       ../../default.nix
     ];
+
+  sops.defaultSopsFile = ./extras/secrets/secrets.yaml;
+  sops.defaultSopsFormat = "yaml";
+
+  sops.age.keyFile = "/root/.config/sops/age/keys.txt";
+
+  sops.secrets."services/users/mustlane".neededForUsers = true;
+  sops.secrets."services/users/root".neededForUsers = true;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -41,7 +49,7 @@
 
   system.stateVersion = "25.05";
 
-nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
  
 hardware.bluetooth = {
   enable = true;
@@ -60,26 +68,26 @@ hardware.bluetooth = {
 };
 
   services.blueman.enable = true;
-
-  services.postgresql = {
-    enable = true;
-    ensureDatabases = [ "mustlane" ];
-};
-
-security.polkit.enable = true;
-
+  security.polkit.enable = true;
   programs.zsh.enable = true;
 
-  users.users.mustlane = {
-    isNormalUser = true;
-    home = "/home/mustlane";
-    description = "Main user";
-    extraGroups = [
-      "wheel"
-      "networkmanager"
-      "postgres"
-    ];
-    shell = pkgs.zsh;
+  users = {
+    mutableUsers = false;
+    users.mustlane = {
+      isNormalUser = true;
+      home = "/home/mustlane";
+      description = "Main user";
+      extraGroups = [
+        "wheel"
+        "networkmanager"
+        "postgres"
+      ];
+      shell = pkgs.zsh;
+      hashedPasswordFile = config.sops.secrets."services/users/mustlane".path;
+    };
+      users.root = {
+      hashedPasswordFile = config.sops.secrets."services/users/root".path;
+    };
   };
 
 nixpkgs.config.allowUnfree = true;
@@ -89,6 +97,8 @@ nixpkgs.config.allowUnfree = true;
   ];
 
   environment.systemPackages = with pkgs; [
+    ungoogled-chromium
+    libreoffice-qt-fresh
     bluez
     bluez-tools
     blueman
@@ -114,5 +124,12 @@ nixpkgs.config.allowUnfree = true;
     hyprpicker
     ytermusic
     youtube-tui
+    prusa-slicer
+    kicad
+    gimp
+    age
+    sops
+    wlprop
+    speedtest-cli
   ];
 }

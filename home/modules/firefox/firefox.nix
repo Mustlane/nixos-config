@@ -8,6 +8,31 @@
 config = lib.mkIf config.firefox.enable {
   programs.firefox = {
     enable = true;
+    profiles = {
+      mustlane = {
+	        isDefault = true;
+        name = "mustlane";
+        settings = {
+          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+          "signon.showAutoCompleteFooter" = false;
+        };
+        userChrome = ''
+          #back-button,
+          #forward-button
+          {
+            display: none !important;
+          }
+
+          .tabbrowser-tab .tab-close-button {
+            display: none;
+          }
+
+          .titlebar-buttonbox-container {
+            display: none;
+          }
+        '';
+      };
+    };
     policies = {
       ExtensionSettings = {
         "uBlock0@raymondhill.net" = {

@@ -8,6 +8,7 @@
     ./modules/git/git.nix
     ./modules/cliphist/cliphist.nix
     ./modules/firefox/firefox.nix
+    ./modules/neovim/neovim.nix
   ];
 
   zsh.enable = true;
@@ -17,4 +18,5 @@
   git.enable = true;
   cliphist.enable = true;
   firefox.enable = true;
+  neovim.enable = true;
 }
