@@ -18,9 +18,14 @@
       url = "github:NotAShelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.2";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, sops-nix, nvf, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, sops-nix, nvf, lanzaboote, ... }@inputs:
     let
       hostname = "nixos";
       system = "x86_64-linux";
@@ -32,6 +37,19 @@
         modules = [
           ./hosts/desktop/configuration.nix
           sops-nix.nixosModules.sops
+
+          lanzaboote.nixosModules.lanzaboote
+          ({ pkgs, lib, ... }: {
+            environment.systemPackages = [
+              pkgs.sbctl
+            ];
+            boot.loader.systemd-boot.enable = lib.mkForce false;
+            boot.lanzaboote = {
+              enable = true;
+              pkiBundle = "/var/lib/sbctl";
+            };
+          })
+
           home-manager.nixosModules.home-manager
           {
           home-manager.useGlobalPkgs = true;

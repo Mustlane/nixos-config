@@ -70,6 +70,10 @@ config = lib.mkIf config.sway.enable {
       bindsym Mod4+o exec grim -g "$(slurp -d)" -t png - | wl-copy -t image/png
       bindsym Mod4+p exec grim -g "$(slurp -d)" -t png - | tee "$HOME/Screenshots"/"Screenshot_$(date +%Y%m%d-%H%M%S).png"
       bindsym Mod4+i exec hyprpicker -a
+      input type:keyboard {
+        xkb_layout us,ru
+        xkb_options grp:alt_shift_toggle
+      }
       '';
     };
   };

@@ -34,6 +34,13 @@
   };
 
   hardware.graphics.enable = true;
+  hardware.nvidia.open = false;
+  hardware.nvidia.modesetting.enable = true;
+  hardware.nvidia.nvidiaSettings = true;
+
+  programs.nix-ld.enable = true;
+
+  services.xserver.videoDrivers = ["nvidia"];
 
   programs.mtr.enable = true;
   programs.gnupg.agent = {
@@ -51,21 +58,21 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
  
-hardware.bluetooth = {
-  enable = true;
-  powerOnBoot = true;
-  settings = {
-    General = {
-      Experimental = true;
-      FastConnectable = true;
-      KernelExperimental = true;
-      Enable = "Source,Sink,Media,Socket";
-  };
-    Policy = {
-      AutoEnable = true;
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    settings = {
+      General = {
+        Experimental = true;
+        FastConnectable = true;
+        KernelExperimental = true;
+        Enable = "Source,Sink,Media,Socket";
+    };
+      Policy = {
+        AutoEnable = true;
+      };
     };
   };
-};
 
   services.blueman.enable = true;
   security.polkit.enable = true;
@@ -95,6 +102,8 @@ nixpkgs.config.allowUnfree = true;
   fonts.packages = with pkgs; [
     dejavu_fonts
   ];
+
+  services.lact.enable = true;
 
   environment.systemPackages = with pkgs; [
     ungoogled-chromium
@@ -131,5 +140,15 @@ nixpkgs.config.allowUnfree = true;
     sops
     wlprop
     speedtest-cli
+    p7zip
+    unrar
+    nvtopPackages.full
+    lact
+    balena-cli
+    sbctl
+    nix-prefetch-git
+    mkvtoolnix
+    vlc
+    ripgrep
   ];
 }
