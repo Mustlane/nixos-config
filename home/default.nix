@@ -10,6 +10,7 @@
     ./modules/firefox/firefox.nix
     ./modules/neovim/neovim.nix
     ./modules/nix-index/nix-index.nix
+    ./modules/zed-editor/zed-editor.nix
   ];
 
   zsh.enable = true;
@@ -21,4 +22,5 @@
   firefox.enable = true;
   neovim.enable = true;
   nix-index.enable = true;
+  zed-editor.enable = true;
 }

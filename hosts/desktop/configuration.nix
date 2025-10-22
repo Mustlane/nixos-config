@@ -38,6 +38,10 @@
   hardware.nvidia.modesetting.enable = true;
   hardware.nvidia.nvidiaSettings = true;
 
+  virtualisation.docker = {
+    enable = true;
+  };
+
   programs.nix-ld.enable = true;
 
   services.xserver.videoDrivers = ["nvidia"];
@@ -88,6 +92,8 @@
         "wheel"
         "networkmanager"
         "postgres"
+        "docker"
+        "dialout"
       ];
       shell = pkgs.zsh;
       hashedPasswordFile = config.sops.secrets."services/users/mustlane".path;
@@ -150,5 +156,9 @@ nixpkgs.config.allowUnfree = true;
     mkvtoolnix
     vlc
     ripgrep
+    libqalculate
+    numbat
+    arduino-ide
+    obs-studio
   ];
 }
