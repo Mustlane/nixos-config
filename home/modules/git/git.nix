@@ -8,8 +8,12 @@
 config = lib.mkIf config.git.enable {
   programs.git = {
     enable = true;
-    userName = "Mustlane";
-    userEmail = "gtx2020super@gmail.com";
+    settings = {
+      user = {
+        name = "Mustlane";
+        email = "gtx2020super@gmail.com";
+      };
+    };
     lfs.enable = true;
     };
   };

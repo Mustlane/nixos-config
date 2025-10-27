@@ -93,7 +93,6 @@
         "networkmanager"
         "postgres"
         "docker"
-        "dialout"
       ];
       shell = pkgs.zsh;
       hashedPasswordFile = config.sops.secrets."services/users/mustlane".path;
@@ -103,7 +102,7 @@
     };
   };
 
-nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = true;
 
   fonts.packages = with pkgs; [
     dejavu_fonts
@@ -160,5 +159,12 @@ nixpkgs.config.allowUnfree = true;
     numbat
     arduino-ide
     obs-studio
+    wine
+    wineWowPackages.waylandFull
+    smartmontools
+    translate-shell
+    krita
+    kdePackages.kdenlive
+    (callPackage ./derivation.nix {})
   ];
 }

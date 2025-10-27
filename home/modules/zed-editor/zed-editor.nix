@@ -10,7 +10,6 @@ config = lib.mkIf config.zed-editor.enable {
     zed-editor = {
       enable = true;
       extensions = [ "html" "catpuccin" "toml" "nix" "sql" "vue" "catpuccin icons" "scss" "latex" "basher" "liveserver" "postgres language server" "rainbox csv" ];
-    };
     userSettings = {
       autosave = "on_focus_change";
       auto_indent = true;
@@ -32,9 +31,10 @@ config = lib.mkIf config.zed-editor.enable {
       theme = {
         mode = "system";
         light = "Catpuccin Frappé";
-        dark = "One Dark"
+        dark = "One Dark";
       };
     };
-    nixGL.vulkan.enable = true;
+  };
+  };
   };
 }
