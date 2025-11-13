@@ -19,13 +19,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.2";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-  };
+#    lanzaboote = {
+#      url = "github:nix-community/lanzaboote/v0.4.2";
+#      inputs.nixpkgs.follows = "nixpkgs";
+#    };
+   };
 
-  outputs = { self, nixpkgs, home-manager, sops-nix, nvf, lanzaboote, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, sops-nix, nvf, ... }@inputs:
     let
       hostname = "nixos";
       system = "x86_64-linux";
@@ -38,17 +38,17 @@
           ./hosts/desktop/configuration.nix
           sops-nix.nixosModules.sops
 
-          lanzaboote.nixosModules.lanzaboote
-          ({ pkgs, lib, ... }: {
-            environment.systemPackages = [
-              pkgs.sbctl
-            ];
-            boot.loader.systemd-boot.enable = lib.mkForce false;
-            boot.lanzaboote = {
-              enable = true;
-              pkiBundle = "/var/lib/sbctl";
-            };
-          })
+#          lanzaboote.nixosModules.lanzaboote
+#          ({ pkgs, lib, ... }: {
+#            environment.systemPackages = [
+#              pkgs.sbctl
+#            ];
+#            boot.loader.systemd-boot.enable = lib.mkForce false;
+#            boot.lanzaboote = {
+#              enable = true;
+#              pkiBundle = "/var/lib/sbctl";
+#            };
+#          })
 
           home-manager.nixosModules.home-manager
           {
@@ -56,6 +56,13 @@
           home-manager.useUserPackages = true;
           home-manager.users.mustlane = import ./home/users/mustlane.nix;
           }
+      ];
+    };
+      nixosConfigurations.andiman = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs;};
+        modules = [
+          ./hosts/andiman/configuration.nix
+          sops-nix.nixosModules.sops
       ];
     };
   };

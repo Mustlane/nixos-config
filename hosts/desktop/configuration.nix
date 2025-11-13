@@ -38,6 +38,8 @@
   hardware.nvidia.modesetting.enable = true;
   hardware.nvidia.nvidiaSettings = true;
 
+  programs.kdeconnect.enable = true;
+
   virtualisation.docker = {
     enable = true;
   };
@@ -81,6 +83,7 @@
   services.blueman.enable = true;
   security.polkit.enable = true;
   programs.zsh.enable = true;
+  programs.ladybird.enable = true;
 
   users = {
     mutableUsers = false;
@@ -111,22 +114,21 @@
   services.lact.enable = true;
 
   environment.systemPackages = with pkgs; [
-    ungoogled-chromium
+    chromium
     libreoffice-qt-fresh
     bluez
     bluez-tools
     blueman
     dbeaver-bin
     youtube-music
-    pnpm_9
+    pnpm
     nodejs_24
     tree
     vscode
     postgresql_18
     btop
     tldr
-    tor
-    tor-browser-bundle-bin
+    tor-browser
     feh
     vesktop
     inkscape
@@ -165,6 +167,26 @@
     translate-shell
     krita
     kdePackages.kdenlive
-    (callPackage ./derivation.nix {})
+    pavucontrol
+    yazi
+    glib
+    obsidian
+    asunder
+    abcde
+    kdePackages.dolphin
+    kdePackages.qtsvg
+    mkvtoolnix
+    pgadmin4
+    makemkv
+    insomnia
+    lshw-gui
+    usbutils
+    strawberry
+    okteta
+    rar
+    gsmartcontrol
+    xhost
+    kdePackages.k3b
+    wpsoffice
   ];
 }
