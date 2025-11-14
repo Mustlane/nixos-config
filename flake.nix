@@ -27,12 +27,11 @@
 
   outputs = { self, nixpkgs, home-manager, sops-nix, nvf, ... }@inputs:
     let
-      hostname = "nixos";
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
     in
     {
-      nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
         modules = [
           ./hosts/desktop/configuration.nix
@@ -62,7 +61,7 @@
         specialArgs = {inherit inputs;};
         modules = [
           ./hosts/andiman/configuration.nix
-          sops-nix.nixosModules.sops
+#          sops-nix.nixosModules.sops
       ];
     };
   };

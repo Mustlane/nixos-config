@@ -19,10 +19,9 @@
               };
             };
             swap = {
-              size = "4GB";
+              size = "4G";
               content = {
                 type = "swap";
-                resumeDevice = true;
                 priority = 1;
               };
             };
@@ -32,9 +31,7 @@
                 type = "btrfs";
                 extraArgs = [ "-f" ];
                 mountpoint = "/";
-                };
                 subvolumes = {
-                  "/root" = {};
                   "/home/andrei" = {};
                 };
               };
@@ -48,7 +45,7 @@
         content = {
           type = "gpt";
           partitions = {
-            sdb1 = {
+            sda1 = {
               size = "100%";
               name = "sdb1"
               content = {
