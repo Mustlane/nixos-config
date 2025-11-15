@@ -23,7 +23,7 @@
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  networking.hostName = "nixos_server";
+  networking.hostName = "nixosserver";
 
   networking.networkmanager = {
     enable = true;

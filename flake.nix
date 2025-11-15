@@ -64,5 +64,18 @@
 #          sops-nix.nixosModules.sops
       ];
     };
+      nixosConfigurations.nixosserver = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs;};
+        modules = [
+          ./hosts/server/configuration.nix
+          sops-nix.nixosModules.sops
+          home-manager.nixosModules.home-manager
+          {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.mustlane = import ./home/users/mustlane.nix;
+        }
+      ];
+    };
   };
 }
