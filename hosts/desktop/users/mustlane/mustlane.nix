@@ -6,6 +6,6 @@
   programs.home-manager.enable = true;
 
   imports = [
-    ../default.nix
+    ../../../../home/default.nix
   ];
 }

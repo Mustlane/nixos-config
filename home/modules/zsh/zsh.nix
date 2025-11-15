@@ -55,7 +55,7 @@ config = lib.mkIf config.zsh.enable {
         plugins = [ "rbw" "copyfile" "copypath" "sudo" "git" ];
       };
     shellAliases = {
-      rebuild-switch = "sudo nixos-rebuild switch --flake /etc/nixos";
+      rebuild-switch = "sudo nixos-rebuild switch --flake /etc/nixos --impure";
       nvidia-stats = "nvidia-smi";
       };
     };

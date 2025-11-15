@@ -53,7 +53,7 @@
           {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.mustlane = import ./home/users/mustlane.nix;
+          home-manager.users.mustlane = import ./hosts/desktop/users/mustlane/mustlane.nix;
           }
       ];
     };
@@ -73,7 +73,7 @@
           {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.mustlane = import ./home/users/mustlane.nix;
+          home-manager.users.mustlane = import ./hosts/server/users/mustlane/mustlane.nix;
         }
       ];
     };
