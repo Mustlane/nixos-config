@@ -6,6 +6,7 @@
     ./nixos/steam/steam.nix
     ./nixos/qbittorrent/qbittorrent.nix
     ./nixos/jellyfin/jellyfin.nix
+    ./nixos/klipper/klipper.nix
   ];
 
   ksnip.enable = false;
@@ -13,4 +14,5 @@
   steam.enable = true;
   qbittorrent.enable = true;
   jellyfin.enable = false;
+  klipper.enable = false;
 }
