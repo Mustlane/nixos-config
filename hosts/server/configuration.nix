@@ -67,6 +67,7 @@
     isNormalUser = true;
     description = "Grigori Tsoganov";
     extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.zsh;
     home = "/home/mustlane";
     packages = with pkgs; [
       fastfetch
