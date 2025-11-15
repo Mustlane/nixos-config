@@ -105,9 +105,11 @@
   };
 };
 
-  services.logind.lidSwitch = "ignore";
-  services.logind.lidSwitchExternalPower = "ignore";
-  services.logind.lidSwitchDocked = "ignore";
+  services.logind.settings.Login = {
+    lidSwitch = "ignore";
+    lidSwitchExternalPower = "ignore";
+    lidSwitchDocked = "ignore";
+  };
 
   system.stateVersion = "25.05";
 
