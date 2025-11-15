@@ -63,6 +63,8 @@
 
   users.mutableUsers = false;
 
+  programs.zsh.enable = true;
+
   users.users.mustlane = {
     isNormalUser = true;
     description = "Grigori Tsoganov";
