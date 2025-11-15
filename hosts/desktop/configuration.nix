@@ -4,7 +4,7 @@
   imports =
     [
       ./hardware-configuration.nix
-      ../../default.nix
+      ../../nixos/default.nix
     ];
 
   sops.defaultSopsFile = ./extras/secrets/secrets.yaml;

@@ -1,12 +1,12 @@
 { pkgs, lib, ... }: {
 
   imports = [
-    ./nixos/ksnip/ksnip.nix
-    ./nixos/postgresql/postgresql.nix
-    ./nixos/steam/steam.nix
-    ./nixos/qbittorrent/qbittorrent.nix
-    ./nixos/jellyfin/jellyfin.nix
-    ./nixos/klipper/klipper.nix
+    ./ksnip/ksnip.nix
+    ./postgresql/postgresql.nix
+    ./steam/steam.nix
+    ./qbittorrent/qbittorrent.nix
+    ./jellyfin/jellyfin.nix
+    ./klipper/klipper.nix
   ];
 
   ksnip.enable = false;
