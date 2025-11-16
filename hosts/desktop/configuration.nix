@@ -188,5 +188,7 @@
     xhost
     kdePackages.k3b
     wpsoffice
+    kdePackages.okular
+    lm_sensors
   ];
 }

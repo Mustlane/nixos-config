@@ -9,6 +9,8 @@
 # L: 31
     g = "#77283B";
     h = "#222222";
+    i = "#AC3950";
+    j = "#C1B492";
   in
   {
 
@@ -23,13 +25,20 @@ config = lib.mkIf config.sway.enable {
     checkConfig = false;
     config = rec {
       modifier = "Mod4";
-      terminal = "kitty"; 
+      terminal = "kitty";
+      workspaceAutoBackAndForth = true;
+      assigns = {
+        "2: Web" = [{ app_id = "firefox"; }];
+        "3: Code" = [{ class = "Code"; }];
+        "4: Docs" = [{ app_id = "^libreoffice"; }];
+        "5: Music" = [{ app_id = "com.github.th_ch.youtube_music"; }];
+      }; 
       colors = {
         background = "${a}";
         focused = {
           background = "${g}";
 # L: 45
-          border = "#AC3950";
+          border = "${i}";
           childBorder = "${g}";
 # S: 95 L: 57
           indicator = "#F62C61";
@@ -64,10 +73,39 @@ config = lib.mkIf config.sway.enable {
           text = "${a}";
         };
       };
+      bars = [{
+        id = "bar-0";
+#        { command = "${pkgs.sway}/bin/swaybar"; }
+        mode = "hide";
+        colors = {
+          focusedWorkspace = {
+            border = "${i}";
+            background = "${g}";
+            text = "${a}"; 
+          };
+          activeWorkspace = { 
+            border = "${i}";
+            background = "${g}";
+            text = "${a}"; 
+          };
+          inactiveWorkspace = { 
+            border = "#C19C92";
+            background = "${j}";
+            text = "${b}"; 
+          };
+          urgentWorkspace = { 
+            border = "#C19C92";
+            background = "#D2738A";
+            text = "${b}"; 
+          };
+        };
+#        extraConfig = {
+#        };
+      }];
     };
     extraConfig = ''
       primary_selection disabled
-      output * bg /etc/nixos/home/bg/wallhaven1.png fill
+      output * bg /etc/nixos/home/bg/wallhaven3.png fill
       bindsym Mod4+o exec grim -g "$(slurp -d)" -t png - | wl-copy -t image/png
       bindsym Mod4+p exec grim -g "$(slurp -d)" -t png - | tee "$HOME/Screenshots"/"Screenshot_$(date +%Y%m%d-%H%M%S).png"
       bindsym Mod4+i exec hyprpicker -a
