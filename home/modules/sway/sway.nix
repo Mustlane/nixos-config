@@ -67,7 +67,7 @@ config = lib.mkIf config.sway.enable {
     };
     extraConfig = ''
       primary_selection disabled
-      output * bg /etc/nixos/home/bg/wallhaven3.png fill
+      output * bg /etc/nixos/home/bg/wallhaven1.png fill
       bindsym Mod4+o exec grim -g "$(slurp -d)" -t png - | wl-copy -t image/png
       bindsym Mod4+p exec grim -g "$(slurp -d)" -t png - | tee "$HOME/Screenshots"/"Screenshot_$(date +%Y%m%d-%H%M%S).png"
       bindsym Mod4+i exec hyprpicker -a
