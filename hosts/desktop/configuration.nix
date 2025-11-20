@@ -28,6 +28,8 @@
 
   services.printing.enable = true;
 
+  nix.settings.trusted-users = [ "mustlane" ];
+
   services.pipewire = {
     enable = true;
     pulse.enable = true;
@@ -161,7 +163,8 @@
     numbat
     arduino-ide
     obs-studio
-    wine
+    wine64
+    winetricks
     wineWowPackages.waylandFull
     smartmontools
     translate-shell
@@ -176,7 +179,6 @@
     kdePackages.dolphin
     kdePackages.qtsvg
     mkvtoolnix
-    pgadmin4
     makemkv
     insomnia
     lshw-gui
@@ -190,5 +192,12 @@
     wpsoffice
     kdePackages.okular
     lm_sensors
+    ffmpeg_7-full
+    nicotine-plus
+    ranger
+    audacity
+    exactaudiocopy
+    freetype
+    libxft
   ];
 }

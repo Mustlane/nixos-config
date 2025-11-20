@@ -75,7 +75,7 @@ config = lib.mkIf config.sway.enable {
       };
       bars = [{
         id = "bar-0";
-#        { command = "${pkgs.sway}/bin/swaybar"; }
+        statusCommand = "/etc/nixos/home/modules/sway/status.sh";
         mode = "hide";
         colors = {
           focusedWorkspace = {

@@ -53,7 +53,7 @@ config = lib.mkIf config.klipper.enable {
       firmwares = {
         mcu = {
           enable = true;
-          configFile = /etc/nixos/hosts/server/extras/config;
+          configFile = ../../hosts/server/extras/config;
         };
       };
       settings = {
